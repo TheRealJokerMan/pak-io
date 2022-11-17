@@ -1,0 +1,8 @@
+{
+    "files" : [
+        "five-twelve-kibibytes.txt",
+        "thirty-five-bytes.txt",
+        "one-subdirectory/one-mebibytes.txt",
+        "one-subdirectory/two-subdirectory/two-mebibytes.txt"
+    ]
+}
