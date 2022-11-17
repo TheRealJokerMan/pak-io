@@ -1,0 +1,7 @@
+#
+# Copyright (c) 2022 Jamie Kenyon. All Rights Reserved.
+# SPDX-License-Identifier: MIT.
+#
+
+breathe==4.34.0
+Sphinx==5.3.0

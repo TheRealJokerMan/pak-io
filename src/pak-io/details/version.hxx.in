@@ -1,0 +1,75 @@
+//
+// Copyright (c) 2022 Jamie Kenyon. All Rights Reserved.
+// SPDX-License-Identifier: MIT.
+//
+
+#include <cstdint>
+#include <string_view>
+
+namespace pak
+{
+    /// Provides access to the versioning information of this application.
+    class Version final
+    {
+    public:
+        /// Get project name.
+        /// \return Version information.
+        static auto name() -> std::string_view
+        {
+            return "@CMAKE_PROJECT_NAME@";
+        }
+
+        /// Get project major version.
+        /// \return Version information.
+        static auto major() -> uint32_t
+        {
+            return @PROJECT_VERSION_MAJOR@;
+        }
+
+        /// Get project minor version.
+        /// \return Version information.
+        static auto minor() -> uint32_t
+        {
+            return @PROJECT_VERSION_MINOR@;
+        }
+
+        /// Get project patch version.
+        /// \return Version information.
+        static auto patch() -> uint32_t
+        {
+            return @PROJECT_VERSION_PATCH@;
+        }
+
+        /// Get project tweak version.
+        /// \return Version information.
+        static auto tweak() -> uint32_t
+        {
+            return @PROJECT_VERSION_TWEAK@;
+        }
+    };
+
+    /// Make an ordinal version number.
+    /// \param major The major version of the API.
+    /// \param minor The minor version of the API.
+    /// \param patch The patch version of the API.
+    /// \param tweak The tweak version of the API.
+    /// \return A 32-bit ordinal value.
+    static inline auto make_version(uint32_t major, uint32_t minor, uint32_t patch, uint32_t tweak) -> uint32_t
+    {
+        return (major << 24) | (minor << 16) | (patch << 8) | (tweak << 0);
+    }
+
+    /// Compare an ordinal version number, to this version.
+    /// \param test The version to test.
+    /// \return true if the two version numbers match, false otherwise.
+    static inline auto match_version(uint32_t test) -> bool
+    {
+        uint32_t const major = (test & 0xFF000000) >> 24;
+        uint32_t const minor = (test & 0xFF0000) >> 16;
+        uint32_t const patch = (test & 0xFF00) >> 8;
+        uint32_t const tweak = test & 0xFF;
+
+        return (major == Version::major()) && (minor == Version::minor()) && (patch == Version::patch()) && (tweak == Version::tweak());
+    }
+
+} // namespace pak

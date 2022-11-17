@@ -1,0 +1,17 @@
+#
+# Copyright (c) 2022 Jamie Kenyon. All Rights Reserved.
+# SPDX-License-Identifier: MIT.
+#
+
+# OSX files:
+.DS_Store
+
+# Python caches:
+__pycache__/
+
+# Visual Studio cache:
+.vs/
+out/
+
+# Visual Studio Code cache:
+.vscode/

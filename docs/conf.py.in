@@ -1,0 +1,33 @@
+#
+# Copyright (c) 2022 Jamie Kenyon. All Rights Reserved.
+# SPDX-License-Identifier: MIT.
+#
+
+
+# -- Project information -----------------------------------------------------
+
+author = '@CMAKE_PACKAGE_VENDOR@'
+copyright = '@PROJECT_CURRENT_YEAR@, @CMAKE_PACKAGE_VENDOR@'
+project = '@CMAKE_PROJECT_NAME@'
+release = '@CMAKE_PROJECT_VERSION@'
+version = '@CMAKE_PROJECT_VERSION@'
+
+
+# -- General configuration ---------------------------------------------------
+
+extensions = [
+    'breathe'
+]
+
+exclude_patterns = []
+
+
+# -- Breathe Configuration ---------------------------------------------------
+
+breathe_projects = { "@CMAKE_PROJECT_NAME@": "@CMAKE_CURRENT_BINARY_DIR@/xml/" }
+breathe_default_project = '@CMAKE_PROJECT_NAME@'
+
+
+# -- Options for HTML output -------------------------------------------------
+
+html_theme = 'classic'

@@ -1,0 +1,83 @@
+{
+    "version": 4,
+    "cmakeMinimumRequired": {
+        "major": 3,
+        "minor": 24,
+        "patch": 2
+    },
+    "configurePresets": [
+        {
+            "name": "default",
+            "hidden": true,
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/../../builds/${sourceDirName}/${presetName}/build",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": {
+                    "type": "STRING",
+                    "value": "${presetName}"
+                },
+                "CMAKE_INSTALL_PREFIX": {
+                    "type": "FILEPATH",
+                    "value": "${sourceDir}/../../builds/${sourceDirName}/${presetName}/install"
+                },
+                "CMAKE_EXPORT_COMPILE_COMMANDS": {
+                    "type": "BOOL",
+                    "value": "ON"
+                }
+            }
+        },
+        {
+            "name": "Debug",
+            "inherits": [
+                "default"
+            ],
+            "displayName": "Debug",
+            "description": "Debug build using Ninja generator."
+        },
+        {
+            "name": "RelWithDebInfo",
+            "inherits": [
+                "default"
+            ],
+            "displayName": "RelWithDebInfo",
+            "description": "Release With Debug Info build using Ninja generator."
+        },
+        {
+            "name": "Release",
+            "inherits": [
+                "default"
+            ],
+            "displayName": "Release",
+            "description": "Release build using Ninja generator."
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "Debug",
+            "configurePreset": "Debug",
+            "verbose": false
+        },
+        {
+            "name": "RelWithDebInfo",
+            "configurePreset": "RelWithDebInfo"
+        },
+        {
+            "name": "Release",
+            "configurePreset": "Release"
+        }
+    ],
+    "testPresets": [
+        {
+            "name": "Debug",
+            "configurePreset": "Debug"
+        },
+        {
+            "name": "RelWithDebInfo",
+            "configurePreset": "RelWithDebInfo"
+        },
+        {
+            "name": "Release",
+            "configurePreset": "Release"
+        }
+    ]
+}
